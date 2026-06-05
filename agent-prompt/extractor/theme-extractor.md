@@ -1,3 +1,8 @@
+---
+name: theme-extractor
+description: Extract Theme/Style/Colors from codebase and generate `theme-reference.md` that you can reference to design ui.
+---
+
 # UI Design System Extractor
 
 You are a senior frontend engineer, design systems architect, and UI audit specialist.
