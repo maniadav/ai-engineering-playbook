@@ -1,74 +1,64 @@
 ---
 name: ui-reference-extractor
-description: Generate a concise AI-first UI reference document that helps future AI agents build pages, components, and features consistent with the existing application.
+description: Generate a compact AI-first UI reference for future code generation.
 ---
-
 
 # AI UI Reference Extractor
 
-You are a senior frontend engineer and design systems auditor.
+Your job is to create a compact reference file that helps future AI agents build new pages, features, and components that feel native to the existing application.
 
-Your task is NOT to document every styling detail.
+This is NOT a design audit.
 
-Your task is to create a concise reference file that helps future AI agents build UI that feels native to the existing application.
+This is NOT a design system document.
 
-The output should optimize for:
+This is NOT developer documentation.
 
-* component reuse
-* layout consistency
-* design token usage
-* existing UI patterns
-* developer productivity
+The goal is to capture recurring UI patterns and reusable building blocks.
 
-Do NOT create a traditional design system document.
+Assume future AI agents can inspect source code when needed.
 
-Do NOT write long descriptions.
+Do not waste space documenting implementation details that can be discovered from the referenced code.
 
-Do NOT explain visual philosophy.
+Focus on:
 
-Do NOT include implementation details that an AI can already discover from the referenced files.
-
-The goal is to produce a compact operational guide.
+* reuse
+* consistency
+* recurring patterns
+* existing abstractions
 
 ---
 
 # Analyze
 
-Recursively analyze:
-
-* app/**
-* pages/**
-* src/**
-* components/**
-* layouts/**
-* styles/**
-* globals.css
-* tailwind.config.*
-* theme files
-* design token files
+Inspect the frontend codebase.
 
 Prioritize:
 
-1. globals.css
-2. theme/token files
-3. components/ui/*
-4. shared components
-5. layout components
-6. frequently used pages
+1. Global styling/theme files
+2. Design token definitions
+3. Reusable UI components
+4. Shared/custom components
+5. Layout components
+6. Frequently used pages
+7. Repeated page structures
 
-Focus only on patterns that appear repeatedly.
+Only document patterns that appear repeatedly.
 
-Do not guess.
+Ignore one-off implementations.
 
 Do not infer intent.
 
-Do not describe branding.
+Do not infer branding.
 
-Document only what exists.
+Do not infer visual philosophy.
+
+Do not describe aesthetics.
+
+Document only observable patterns.
 
 ---
 
-# Generate One File Only
+# Generate One File
 
 Output only:
 
@@ -78,7 +68,7 @@ No commentary.
 
 No recommendations.
 
-No analysis.
+No analysis logs.
 
 No redesign suggestions.
 
@@ -86,357 +76,205 @@ No redesign suggestions.
 
 # Required Structure
 
-## Quick Summary
+## Tech Stack
 
-Provide a short overview:
+Identify the frontend technologies actually used by the project.
 
-* framework
-* styling system
-* component system
-* design token approach
+Only include technologies verified from the codebase.
 
-Example:
-
-* Next.js App Router
-* Tailwind CSS v4
-* shadcn/ui
-* CSS variable based theme tokens
+Keep concise.
 
 ---
 
-## Design Token Rules
+## Design Tokens
 
-Document only the tokens future UI should use.
-
-Example:
-
-Colors
-
-* bg-background
-* bg-card
-* bg-primary
-* bg-secondary
-* bg-muted
-
-Text
-
-* text-foreground
-* text-muted-foreground
-* text-primary
-
-Borders
-
-* border-border
-* border-input
-
-Radius
-
-* rounded-md
-* rounded-lg
-* rounded-xl
-* rounded-2xl
-
-Spacing
-
-* gap-4
-* gap-6
-* p-4
-* p-6
-* py-8
-* py-16
-
-Only include commonly used tokens.
-
-Do NOT include raw hex values unless the project directly uses them throughout the UI.
-
----
-
-## Component Inventory
-
-List reusable components.
-
-Format:
-
-### Button
-
-Path:
-components/ui/button.tsx
-
-Used In:
-...
-
-### Card
-
-Path:
-components/ui/card.tsx
-
-Used In:
-...
-
-Group by:
-
-* Inputs
-* Data Display
-* Navigation
-* Overlays
-* Feedback
-* Layout
-
-Keep descriptions short.
-
----
-
-## Golden Components
-
-Identify the most important reusable components that future AI should copy before creating new ones.
-
-Format:
-
-### Primary Button
-
-Path:
-components/ui/button.tsx
-
-Reason:
-Base action pattern used throughout application.
-
-### Dashboard Card
-
-Path:
-components/dashboard/stat-card.tsx
-
-Reason:
-Canonical dashboard card.
-
-Maximum 15 components.
-
-Only include high-confidence patterns.
-
----
-
-## Layout Recipes
-
-Document recurring layouts.
-
-Example:
-
-### Dashboard Page
-
-Structure:
-
-PageHeader
-↓
-Stats Grid
-↓
-Filters
-↓
-Data Table
-↓
-Pagination
-
-Reference:
-app/dashboard/page.tsx
-
----
-
-### Detail Page
-
-Structure:
-
-Hero
-↓
-Summary Card
-↓
-Tabs
-↓
-Content Sections
-
-Reference:
-app/projects/[id]/page.tsx
-
-Only include layouts that appear repeatedly.
-
----
-
-## Common UI Patterns
-
-Document reusable page sections.
+Extract only recurring design tokens and styling primitives.
 
 Examples:
 
-### Stats Grid
+* colors
+* typography tokens
+* spacing scale
+* radius scale
+* border tokens
+* shadow tokens
 
-Reference:
-components/dashboard/stats-grid.tsx
+Use actual token names found in the codebase.
 
-Pattern:
-grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6
+Do not include raw values unless the project primarily uses raw values.
 
----
-
-### Form Page
-
-Reference:
-app/settings/page.tsx
-
-Pattern:
-max-w-3xl
-space-y-6
-Card-based sections
+Do not explain tokens.
 
 ---
 
-### Empty State
+## Reusable Components
 
-Reference:
-components/ui/empty.tsx
+List reusable UI components that future AI should prefer before creating new UI.
 
-Pattern:
-Centered icon
-Title
-Description
-CTA
+For each component include:
 
-Keep each pattern under 5 lines.
+* component name
+* primary purpose
+
+Example:
+
+Button
+Used for user actions.
+
+Card
+Primary content container.
+
+Dialog
+Modal interactions.
+
+Keep descriptions to one sentence.
+
+Do not include file paths.
+
+Do not include implementation details.
+
+---
+
+## Reusable Patterns
+
+Identify recurring UI patterns.
+
+Examples:
+
+* dashboard cards
+* forms
+* tables
+* filters
+* search interfaces
+* settings pages
+* detail pages
+* empty states
+* onboarding flows
+
+For each pattern include:
+
+* pattern name
+* short structure
+
+Example:
+
+Dashboard
+
+Header
+→ Stats
+→ Filters
+→ Content
+
+Keep concise.
+
+---
+
+## Layout Rules
+
+Document recurring layout conventions.
+
+Examples:
+
+* container widths
+* section spacing
+* card spacing
+* grid patterns
+* responsive patterns
+
+Only include patterns observed repeatedly.
 
 ---
 
 ## Typography Rules
 
-Document only recurring patterns.
+Document recurring typography patterns.
 
-Example:
+Examples:
 
-Page Title
+* page titles
+* section headings
+* body text
+* labels
+* captions
 
-Classes:
-text-4xl md:text-5xl font-bold
+Only include patterns observed repeatedly.
 
-Reference:
-...
-
-Section Heading
-
-Classes:
-...
-
-Body Text
-
-Classes:
-...
-
-Maximum 10 entries.
-
----
-
-## Spacing & Layout Rules
-
-Document only recurring rules.
-
-Example:
-
-Containers
-
-* max-w-6xl mx-auto px-4
-
-Cards
-
-* p-6
-
-Sections
-
-* py-16 md:py-24
-
-Grids
-
-* gap-6
-
-Only include patterns seen repeatedly.
+Keep concise.
 
 ---
 
 ## Motion Rules
 
-Document only repeated animation patterns.
+Document recurring motion and interaction patterns.
 
-Example:
+Examples:
 
-* transition-all duration-200
-* hover:scale-[1.02]
-* animate-pulse
-* Framer Motion spring animations
+* hover effects
+* transitions
+* loading states
+* animations
 
-Include references.
+Only include patterns used repeatedly.
 
-Do not explain.
-
----
-
-## Reuse Before Building
-
-List files AI should inspect before creating new UI.
-
-Example:
-
-Buttons:
-components/ui/button.tsx
-
-Cards:
-components/ui/card.tsx
-
-Dialogs:
-components/ui/dialog.tsx
-
-Forms:
-app/settings/page.tsx
-
-Tables:
-components/ui/table.tsx
-
-Dashboards:
-app/dashboard/page.tsx
-
-This section should be highly practical.
+Do not explain them.
 
 ---
 
-# Future AI Instructions
+## Reuse Strategy
 
-Generate concise instructions.
+List the order future AI should follow when creating UI.
 
 Example:
 
-1. Reuse existing components before creating new ones.
-2. Use semantic theme tokens instead of raw colors.
-3. Match existing spacing scale.
-4. Follow existing layout recipes.
-5. Prefer patterns from Golden Components.
-6. Copy existing page structures when possible.
-7. Preserve typography hierarchy.
-8. Preserve border radius scale.
-9. Preserve interaction patterns.
-10. New UI should look like it belongs in the application.
+1. Reuse existing components.
+2. Reuse existing page patterns.
+3. Reuse existing layout patterns.
+4. Create new UI only when no existing pattern exists.
 
-Keep this section under 15 rules.
+Keep under 10 rules.
+
+---
+
+## Future AI Instructions
+
+Generate concise rules derived from the codebase.
+
+Focus on:
+
+* component reuse
+* token reuse
+* layout consistency
+* typography consistency
+* interaction consistency
+
+Rules should be actionable.
+
+Avoid generic advice.
+
+Maximum 15 rules.
 
 ---
 
 # Critical Constraints
 
-The final document should be concise.
-
 Target length:
 
-1,000–2,500 words.
+500–1200 words.
 
-Optimize for future AI code generation.
+Every section must directly improve future UI generation.
 
-Not for designers.
+Remove anything that:
 
-Not for audits.
+* describes implementation details
+* lists file locations
+* explains how code works
+* documents usage locations
+* describes branding
+* describes aesthetics
+* repeats information already captured elsewhere
 
-Not for documentation completeness.
+Prefer abstractions over inventories.
 
-The file should help an AI answer:
+Prefer recurring patterns over exhaustive documentation.
 
-"If I need to build a new page or component, what existing patterns should I follow?"
+If a future AI can discover something quickly by reading code, do not include it.
