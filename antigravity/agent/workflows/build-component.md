@@ -166,12 +166,12 @@ export function UserCard({
 
 ## Common Pitfalls to Avoid
 
-- ❌ Don't add `'use client'` by default
-- ❌ Don't put business logic in component
-- ❌ Don't create unnecessary state
-- ❌ Don't duplicate derived values in state
-- ❌ Don't forget to handle edge cases
-- ❌ Don't make components too complex (split instead)
+- Don't add `'use client'` by default
+- Don't put business logic in component
+- Don't create unnecessary state
+- Don't duplicate derived values in state
+- Don't forget to handle edge cases
+- Don't make components too complex (split instead)
 
 ## Next Steps
 
