@@ -1,3 +1,10 @@
+---
+name: project Overview Writer
+description: Write project overview for developer to understand the project
+---
+
+
+
 Analyze the provided GitHub repository and generate a concise, business-friendly **Project Overview** document as **project_overview.md**
 
 The goal is to help a new developer, manager, interviewer, or stakeholder quickly understand the project without reading the entire codebase.
