@@ -310,9 +310,14 @@ Senior engineers document limitations.
 
 ## Future Improvements
 
-List reasonable future work based on the repository.
+Include Future Improvements only if they can be
+reasonably inferred from:
+- TODO comments
+- issues
+- roadmap documents
+- architectural constraints
 
-Keep practical and realistic.
+Otherwise, omit the section.
 
 ## License
 
